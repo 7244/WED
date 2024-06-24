@@ -1,5 +1,5 @@
-struct _ETC_WED_P(t){
-  typedef ETC_WED_set_DataType CharacterData_t;
+struct _WED_P(t){
+  typedef WED_set_DataType CharacterData_t;
 
   enum class CursorType : uint8_t{
     FreeStyle,
@@ -36,10 +36,10 @@ struct _ETC_WED_P(t){
   #define BLL_set_declare_NodeReference 0
   #define BLL_set_declare_rest 1
   #define BLL_set_NodeData \
-    ETC_WED_set_WidthType width; \
+    WED_set_WidthType width; \
     CharacterData_t data; \
     CursorReference_t CursorReference;
-  #define BLL_set_debug_InvalidAction ETC_WED_set_debug_InvalidCharacterAccess
+  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidCharacterAccess
   #include <BLL/BLL.h>
   typedef _CharacterList_NodeData_t _Character_t;
 
@@ -49,10 +49,10 @@ struct _ETC_WED_P(t){
   #define BLL_set_declare_NodeReference 0
   #define BLL_set_declare_rest 1
   #define BLL_set_NodeData \
-    ETC_WED_set_WidthType TotalWidth; \
+    WED_set_WidthType TotalWidth; \
     bool IsEndLine; \
     _CharacterList_t CharacterList;
-  #define BLL_set_debug_InvalidAction ETC_WED_set_debug_InvalidLineAccess
+  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidLineAccess
   #define BLL_set_debug_InvalidAction_srcAccess 0
   #include <BLL/BLL.h>
   typedef _LineList_NodeData_t _Line_t;
@@ -68,21 +68,21 @@ struct _ETC_WED_P(t){
       struct{ \
         LineReference_t LineReference; \
         CharacterReference_t CharacterReference; \
-        ETC_WED_set_WidthType PreferredWidth; \
+        WED_set_WidthType PreferredWidth; \
       }FreeStyle; \
       struct{ \
         LineReference_t LineReference[2]; \
         CharacterReference_t CharacterReference[2]; \
-        ETC_WED_set_WidthType PreferredWidth; \
+        WED_set_WidthType PreferredWidth; \
       }Selection; \
     };
-  #define BLL_set_debug_InvalidAction ETC_WED_set_debug_InvalidCursorAccess
+  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidCursorAccess
   #include <BLL/BLL.h>
   typedef _CursorList_NodeData_t Cursor_t;
 
   struct ExportedCursor_t{
     CursorReference_t CursorReference;
-    ETC_WED_set_WidthType x;
+    WED_set_WidthType x;
     uint32_t y; /* TOOD what type to use? */
   };
 
@@ -90,7 +90,7 @@ struct _ETC_WED_P(t){
   _CursorList_t CursorList;
 
   uint32_t LineHeight; /* TOOD what type to use? */
-  ETC_WED_set_WidthType LineWidth;
+  WED_set_WidthType LineWidth;
   uint32_t LineLimit;  /* TOOD what type to use? */
   uint32_t LineCharacterLimit; /* TOOD what type to use? */
 

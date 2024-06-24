@@ -1,7 +1,7 @@
 void
 open(
   uint32_t LineHeight,
-  ETC_WED_set_WidthType LineWidth,
+  WED_set_WidthType LineWidth,
   uint32_t LineLimit,
   uint32_t LineCharacterLimit
 ){
@@ -624,7 +624,7 @@ void
 AddCharacterToCursor(
   CursorReference_t CursorReference,
   CharacterData_t data,
-  ETC_WED_set_WidthType width
+  WED_set_WidthType width
 ){
   Cursor_t *Cursor = &this->CursorList[CursorReference];
   _CursorIsTriggered(Cursor);
@@ -797,7 +797,7 @@ void MoveCursorFreeStyleToBeginOfLine(CursorReference_t CursorReference){
   _Character_t *BeginCharacter = &Line->CharacterList[BeginCharacterReference];
   if(BeginCharacter->CursorReference.iic() == false){
     /* there is already cursor there */
-    ETC_WED_set_Abort();
+    WED_set_Abort();
   }
   BeginCharacter->CursorReference = CursorReference;
   Cursor->FreeStyle.CharacterReference = BeginCharacterReference;
@@ -821,7 +821,7 @@ void MoveCursorFreeStyleToEndOfLine(CursorReference_t CursorReference){
   _Character_t *EndCharacter = &Line->CharacterList[EndCharacterReference];
   if(EndCharacter->CursorReference.iic() == false){
     /* there is already cursor there */
-    ETC_WED_set_Abort();
+    WED_set_Abort();
   }
   EndCharacter->CursorReference = CursorReference;
   Cursor->FreeStyle.CharacterReference = EndCharacterReference;
@@ -929,7 +929,7 @@ void MoveCursorSelectionToEndOfLine(CursorReference_t CursorReference){
 void GetLineAndCharacter(
   LineReference_t HintLineReference,
   uint32_t y, /* TOOD */
-  ETC_WED_set_WidthType x,
+  WED_set_WidthType x,
   LineReference_t *LineReference, /* w */
   CharacterReference_t *CharacterReference /* w */
 ){
@@ -1045,7 +1045,7 @@ cursor_open(
   Cursor->FreeStyle.PreferredWidth = -1;
   Cursor->FreeStyle.CharacterReference = Line->CharacterList.src;
   if(Character->CursorReference.iic() == false){
-    ETC_WED_set_Abort();
+    WED_set_Abort();
   }
   Character->CursorReference = CursorReference;
   return CursorReference;
@@ -1089,7 +1089,7 @@ void NowAllCharacterSizesAre(bool Smaller){
   }
 }
 
-void SetLineWidth(ETC_WED_set_WidthType LineWidth){
+void SetLineWidth(WED_set_WidthType LineWidth){
   if(LineWidth == this->LineWidth){
     return;
   }
@@ -1181,7 +1181,7 @@ void
 SetCharacterWidth_Silent(
   LineReference_t LineID,
   CharacterReference_t CharacterID,
-  ETC_WED_set_WidthType Width
+  WED_set_WidthType Width
 ){
   _Line_t *Line = &LineList[LineID];
   Line->TotalWidth -= Line->CharacterList[CharacterID].width;
@@ -1190,10 +1190,10 @@ SetCharacterWidth_Silent(
 
 /* line iterate */
 struct li_t{
-  _ETC_WED_P(t) *wed;
+  _WED_P(t) *wed;
   LineReference_t id;
 
-  li_t(_ETC_WED_P(t) *p_wed){
+  li_t(_WED_P(t) *p_wed){
     wed = p_wed;
     id = wed->LineList.GetNodeFirst();
   }
@@ -1210,7 +1210,7 @@ struct ci_t{
   CharacterReference_t id;
   _Line_t *Line;
 
-  ci_t(_ETC_WED_P(t) *wed, LineReference_t LineID){
+  ci_t(_WED_P(t) *wed, LineReference_t LineID){
     Line = &wed->LineList[LineID];
     id = Line->CharacterList.GetNodeFirst();
   }
