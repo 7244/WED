@@ -797,7 +797,7 @@ void MoveCursorFreeStyleToBeginOfLine(CursorReference_t CursorReference){
   _Character_t *BeginCharacter = &Line->CharacterList[BeginCharacterReference];
   if(BeginCharacter->CursorReference.iic() == false){
     /* there is already cursor there */
-    WED_set_Abort();
+    __abort();
   }
   BeginCharacter->CursorReference = CursorReference;
   Cursor->FreeStyle.CharacterReference = BeginCharacterReference;
@@ -821,7 +821,7 @@ void MoveCursorFreeStyleToEndOfLine(CursorReference_t CursorReference){
   _Character_t *EndCharacter = &Line->CharacterList[EndCharacterReference];
   if(EndCharacter->CursorReference.iic() == false){
     /* there is already cursor there */
-    WED_set_Abort();
+    __abort();
   }
   EndCharacter->CursorReference = CursorReference;
   Cursor->FreeStyle.CharacterReference = EndCharacterReference;
@@ -1045,7 +1045,7 @@ cursor_open(
   Cursor->FreeStyle.PreferredWidth = -1;
   Cursor->FreeStyle.CharacterReference = Line->CharacterList.src;
   if(Character->CursorReference.iic() == false){
-    WED_set_Abort();
+    __abort();
   }
   Character->CursorReference = CursorReference;
   return CursorReference;

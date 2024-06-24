@@ -18,10 +18,6 @@
   #define WED_set_debug_InvalidCursorAccess 0
 #endif
 
-#ifndef WED_set_Abort
-  #define WED_set_Abort() assert(0)
-#endif
-
 #ifndef WED_set_DataType
   #define WED_set_DataType wchar_t
 #endif
@@ -33,8 +29,6 @@
 #undef _WED_P
 
 #undef WED_set_DataType
-
-#undef WED_set_Abort
 
 #undef WED_set_debug_InvalidCursorAccess
 #undef WED_set_debug_InvalidLineAccess
