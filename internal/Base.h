@@ -31,6 +31,7 @@ struct _WED_P(t){
   typedef _CursorList_NodeReference_t CursorReference_t;
 
   #define BLL_set_Language 1
+  #define BLL_set_Usage 1
   #define BLL_set_AreWeInsideStruct 1
   #define BLL_set_prefix _CharacterList
   #define BLL_set_declare_NodeReference 0
@@ -39,11 +40,11 @@ struct _WED_P(t){
     WED_set_WidthType width; \
     CharacterData_t data; \
     CursorReference_t CursorReference;
-  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidCharacterAccess
   #include <BLL/BLL.h>
   typedef _CharacterList_NodeData_t _Character_t;
 
   #define BLL_set_Language 1
+  #define BLL_set_Usage 1
   #define BLL_set_AreWeInsideStruct 1
   #define BLL_set_prefix _LineList
   #define BLL_set_declare_NodeReference 0
@@ -52,12 +53,11 @@ struct _WED_P(t){
     WED_set_WidthType TotalWidth; \
     bool IsEndLine; \
     _CharacterList_t CharacterList;
-  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidLineAccess
-  #define BLL_set_debug_InvalidAction_srcAccess 0
   #include <BLL/BLL.h>
   typedef _LineList_NodeData_t _Line_t;
 
   #define BLL_set_Language 1
+  #define BLL_set_Usage 1
   #define BLL_set_AreWeInsideStruct 1
   #define BLL_set_prefix _CursorList
   #define BLL_set_declare_NodeReference 0
@@ -76,7 +76,6 @@ struct _WED_P(t){
         WED_set_WidthType PreferredWidth; \
       }Selection; \
     };
-  #define BLL_set_debug_InvalidAction WED_set_debug_InvalidCursorAccess
   #include <BLL/BLL.h>
   typedef _CursorList_NodeData_t Cursor_t;
 

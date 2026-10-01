@@ -8,16 +8,6 @@
   #define WED_set_WidthType uint32_t
 #endif
 
-#ifndef WED_set_debug_InvalidCharacterAccess
-  #define WED_set_debug_InvalidCharacterAccess 0
-#endif
-#ifndef WED_set_debug_InvalidLineAccess
-  #define WED_set_debug_InvalidLineAccess 0
-#endif
-#ifndef WED_set_debug_InvalidCursorAccess
-  #define WED_set_debug_InvalidCursorAccess 0
-#endif
-
 #ifndef WED_set_DataType
   #define WED_set_DataType wchar_t
 #endif
@@ -29,10 +19,6 @@
 #undef _WED_P
 
 #undef WED_set_DataType
-
-#undef WED_set_debug_InvalidCursorAccess
-#undef WED_set_debug_InvalidLineAccess
-#undef WED_set_debug_InvalidCharacterAccess
 
 #undef WED_set_WidthType
 
