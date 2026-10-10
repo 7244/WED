@@ -15,12 +15,12 @@ open(
 void
 close(
 ){
-  this->CursorList.Open();
+  this->CursorList.Close();
   LineReference_t LineReference = this->LineList.GetNodeFirst();
   while(LineReference != this->LineList.dst){
     _LineList_Node_t *LineNode = this->LineList.GetNodeByReference(LineReference);
     _Line_t *Line = &LineNode->data;
-    Line->CharacterList.Open();
+    Line->CharacterList.Close();
     LineReference = LineNode->NextNodeReference;
   }
   this->LineList.Close();
