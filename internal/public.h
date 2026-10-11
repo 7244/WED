@@ -11,6 +11,13 @@ open(
   this->LineWidth = LineWidth;
   this->LineLimit = LineLimit;
   this->LineCharacterLimit = LineCharacterLimit;
+
+  auto LineReference = this->LineList.NewNodeFirst();
+  auto Line = &this->LineList[LineReference];
+  Line->TotalWidth = 0;
+  Line->IsEndLine = 1;
+  Line->CharacterList.Open();
+  Line->CharacterList[Line->CharacterList.src].CursorReference.sic();
 }
 void
 close(
@@ -1018,24 +1025,9 @@ void ConvertCursorToSelection(
 CursorReference_t
 cursor_open(
 ){
-  LineReference_t LineReference;
-  _Line_t *Line;
-  _Character_t *Character;
-  if(this->LineList.Usage() == 0){
-    /* WED doesnt have any line so lets open a line */
-    LineReference = this->LineList.NewNodeFirst();
-    Line = &this->LineList[LineReference];
-    Line->TotalWidth = 0;
-    Line->IsEndLine = 1;
-    Line->CharacterList.Open();
-    Character = &Line->CharacterList[Line->CharacterList.src];
-    Character->CursorReference.sic();
-  }
-  else{
-    LineReference = this->LineList.GetNodeByReference(this->LineList.src)->NextNodeReference;
-    Line = &this->LineList[LineReference];
-    Character = &Line->CharacterList[Line->CharacterList.src];
-  }
+  auto LineReference = this->LineList.GetNodeByReference(this->LineList.src)->NextNodeReference;
+  auto Line = &this->LineList[LineReference];
+  auto Character = &Line->CharacterList[Line->CharacterList.src];
 
   CursorReference_t CursorReference = this->CursorList.NewNodeLast();
   Cursor_t *Cursor = &this->CursorList[CursorReference];
