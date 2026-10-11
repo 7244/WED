@@ -417,7 +417,7 @@ void _LineSlideBackFromNext(
     _MoveAllCursors(NextLineReference, NextCharacterReference, NextCharacter, LineReference, LastCharacterReference, LastCharacter);
     bool IsEndLine = NextLineNode->data.IsEndLine;
     _RemoveLine(NextLineReference);
-    if(NextLineNode->data.IsEndLine){
+    if(IsEndLine){
       LineNode->data.IsEndLine = 1;
       return;
     }
