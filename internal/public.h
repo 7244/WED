@@ -178,7 +178,7 @@ void MoveCursorFreeStyleToLeft(CursorReference_t CursorReference){
     case CursorType::FreeStyle:{
       LineReference_t LineReference = Cursor->FreeStyle.LineReference;
       _LineList_Node_t *LineNode = this->LineList.GetNodeByReference(LineReference);
-      _Line_t *Line = &LineNode->data;
+      _Line_t *Line;
       CharacterReference_t CharacterReference = Cursor->FreeStyle.CharacterReference;
       if(_GetLineAndCharacterOfLeft(
         LineReference,
@@ -586,7 +586,6 @@ void MoveCursorSelectionToDown(CursorReference_t CursorReference){
         /* we already in bottom */
         return;
       }
-      _LineList_Node_t *NextLineNode = this->LineList.GetNodeByReference(NextLineReference);
       _Line_t *NextLine = &this->LineList[NextLineReference];
       CharacterReference_t dstCharacterReference;
       _Character_t *dstCharacter;

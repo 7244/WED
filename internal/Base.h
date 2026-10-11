@@ -79,12 +79,6 @@ struct _WED_P(t){
   #include <BLL/BLL.h>
   typedef _CursorList_NodeData_t Cursor_t;
 
-  struct ExportedCursor_t{
-    CursorReference_t CursorReference;
-    WED_set_WidthType x;
-    uint32_t y; /* TOOD what type to use? */
-  };
-
   _LineList_t LineList;
   _CursorList_t CursorList;
 

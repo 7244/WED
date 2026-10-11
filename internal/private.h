@@ -258,30 +258,6 @@ bool _GetLineAndCharacterOfRight(
     return 0;
   }
 }
-void _GetLineAndCharacterOfRight_Unsafe(
-  LineReference_t srcLineReference,
-  _LineList_Node_t *srcLineNode,
-  CharacterReference_t srcCharacterReference,
-  LineReference_t *dstLineReference,
-  _Line_t **dstLine,
-  CharacterReference_t *dstCharacterReference
-){
-  _Line_t *srcLine = &srcLineNode->data;
-  CharacterReference_t NextCharacterReference = srcLine->CharacterList.GetNodeByReference(srcCharacterReference)->NextNodeReference;
-  if(NextCharacterReference == srcLine->CharacterList.dst){
-    /* its end of line */
-    LineReference_t NextLineReference = srcLineNode->NextNodeReference;
-    _Line_t *NextLine = &this->LineList[NextLineReference];
-    *dstLineReference = NextLineReference;
-    *dstLine = NextLine;
-    *dstCharacterReference = NextLine->CharacterList.src;
-  }
-  else{
-    *dstLineReference = srcLineReference;
-    *dstLine = srcLine;
-    *dstCharacterReference = NextCharacterReference;
-  }
-}
 
 /* this function able to change this->LineList pointers */
 /* returns 0 if success */
